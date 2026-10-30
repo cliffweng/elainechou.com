@@ -1,5 +1,5 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import "@fontsource/source-serif-4/latin-400.css";
 import "@fontsource/source-serif-4/latin-600.css";
 import "@fontsource/source-serif-4/latin-ext-400.css";
@@ -16,8 +16,14 @@ if (!root) {
   throw new Error("Root element missing");
 }
 
-createRoot(root).render(
+const app = (
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 );
+
+if (root.hasChildNodes()) {
+  hydrateRoot(root, app);
+} else {
+  createRoot(root).render(app);
+}

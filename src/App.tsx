@@ -206,7 +206,7 @@ export default function App() {
               Liquid credit investing, credit research, and AI in the investment process.
             </p>
             <p className="sub">Liquid Credit (IG/HY/EM) at MEAG New York.</p>
-            <a className="button" href={LINKEDIN} rel="noopener noreferrer" target="_blank">
+            <a className="button" href={LINKEDIN} rel="me noopener noreferrer" target="_blank" aria-label="Connect with Elaine Chou on LinkedIn (opens in a new tab)">
               Connect on LinkedIn
             </a>
           </div>
@@ -331,7 +331,7 @@ export default function App() {
 
       <footer className="site-footer">
         <div className="wrap foot">
-          <a href={LINKEDIN} rel="noopener noreferrer" target="_blank">
+          <a href={LINKEDIN} rel="me noopener noreferrer" target="_blank" aria-label="Elaine Chou on LinkedIn (opens in a new tab)">
             LinkedIn
           </a>
           <p>© Elaine Chou</p>

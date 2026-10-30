@@ -8,11 +8,12 @@
   --tint: #f0eee6;
   --line: #d9d5c7;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --header-h: 4.25rem;
   --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -45,9 +46,8 @@ a:focus-visible, .button:focus-visible {
 
 .site-header {
   position: sticky; top: 0; z-index: 10;
-  background: rgba(251, 250, 246, 0.95);
+  background: var(--paper);
   border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(6px);
 }
 .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.25rem 1.5rem; padding-top: 0.6rem; padding-bottom: 0.6rem; }
 .brand { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--green); text-decoration: none; font-family: var(--serif); font-weight: 600; font-size: 1.15rem; }
@@ -60,6 +60,7 @@ nav a { color: var(--ink); text-decoration: none; font-size: 0.95rem; padding: 0
 nav a:hover { border-bottom-color: var(--accent); }
 
 section { padding: 4rem 0; }
+[id] { scroll-margin-top: var(--header-h); }
 section.tint { background: var(--tint); }
 h2 { font-size: 1.75rem; color: var(--green); margin-bottom: 1.5rem; padding-bottom: 0.6rem; position: relative; }
 h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 2.5rem; height: 2px; background: var(--accent); }
@@ -77,7 +78,9 @@ h3 { font-size: 1.15rem; color: var(--green); margin-bottom: 0.6rem; }
 }
 .button:hover { background: #d8c58f; color: var(--green); }
 
-.cards { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+.cards { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 40rem) { .cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 60rem) { .cards { grid-template-columns: repeat(3, 1fr); } }
 .card { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--green-2); padding: 1.25rem; }
 .card h3 { font-size: 1.1rem; }
 .card p { color: var(--muted); font-size: 0.98rem; }
@@ -105,6 +108,16 @@ h3 { font-size: 1.15rem; color: var(--green); margin-bottom: 0.6rem; }
 .site-footer { background: var(--green); color: #d3dcd7; padding: 1.75rem 0; }
 .site-footer a { color: #fff; }
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem; }
+
+@media (max-width: 40rem) {
+  .bar { flex-wrap: nowrap; gap: 0.75rem; }
+  .brand { flex: none; font-size: 1.05rem; }
+  nav { flex: 1; min-width: 0; }
+  nav ul { flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 0 0.9rem; }
+  nav ul::-webkit-scrollbar { display: none; }
+  nav li { flex: none; }
+  nav a { font-size: 0.9rem; }
+}
 
 @media (max-width: 30rem) {
   section { padding: 3rem 0; }

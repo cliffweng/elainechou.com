@@ -1,12 +1,14 @@
-const LINKEDIN = "https://www.linkedin.com/in/elaineschou/";
+import { useEffect } from "react";
+
+const LINKEDIN ="https://www.linkedin.com/in/elaineschou/";
 
 const focusAreas = [
-  { title: "Liquid credit (IG/HY/EM)", text: "Investment grade, high yield, and emerging market corporate credit." },
+  { title: "Liquid credit (IG/HY/EM)", text: "Investment grade, high yield, and emerging market credit." },
   { title: "AI-driven investment research", text: "Integrating AI-driven tools to enhance the investment process and uncover opportunities." },
   { title: "Investment risk & stress testing", text: "Risk assessment tools, stress testing, and scenario analysis." },
-  { title: "Structured credit (CLO/CDO/CDS)", text: "Research, trading, and portfolio management across structured credit and credit derivatives." },
+  { title: "Structured credit (CLO/CDO/CDS)", text: "Researched, traded, and monitored Structured Credit, focusing on corporate CDS, CDX, iTRAXX, and CDOs." },
   { title: "ESG integration", text: "Incorporating ESG considerations into decision-making frameworks." },
-  { title: "Legal & capital-structure expertise", text: "A legal and finance background applied to capital structure, special situations, and distressed securities." },
+  { title: "Legal & capital-structure expertise", text: "Company analysis and financial modeling, advising on new issues, corporate events, special situations and distressed securities." },
 ];
 
 type Role = { title: string; org?: string; dates: string; place?: string; bullets: string[] };
@@ -160,6 +162,20 @@ function Job({ role }: { role: Role }) {
 }
 
 export default function App() {
+  useEffect(() => {
+    const go = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      document.getElementById(id)?.scrollIntoView();
+    };
+    const raf = requestAnimationFrame(go);
+    document.fonts?.ready.then(go);
+    window.addEventListener("hashchange", go);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("hashchange", go);
+    };
+  }, []);
+
   return (
     <>
       <a className="skip" href="#main">Skip to content</a>
@@ -291,7 +307,7 @@ export default function App() {
 
         <section id="more" aria-labelledby="more-h">
           <div className="wrap">
-            <h2 id="more-h">Languages &amp; board</h2>
+            <h2 id="more-h">Languages &amp; Board</h2>
             <div className="cols">
               <div>
                 <h3>Languages</h3>

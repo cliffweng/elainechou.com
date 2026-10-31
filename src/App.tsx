@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 
-const LINKEDIN ="https://www.linkedin.com/in/elaineschou/";
+const LINKEDIN = "https://www.linkedin.com/in/elaineschou/";
 
 const focusAreas = [
   { title: "Liquid credit (IG/HY/EM)", text: "Investment grade, high yield, and emerging market credit." },
   { title: "AI-driven investment research", text: "Integrating AI-driven tools to enhance the investment process and uncover opportunities." },
   { title: "Investment risk & stress testing", text: "Risk assessment tools, stress testing, and scenario analysis." },
-  { title: "Structured credit (CLO/CDO/CDS)", text: "Researched, traded, and monitored Structured Credit, focusing on corporate CDS, CDX, iTRAXX, and CDOs." },
+  { title: "Structured credit (CLO/CDO/CDS)", text: "Researching, trading, and monitoring structured credit, with a focus on corporate CDS, CDX, iTraxx, and CDOs." },
   { title: "ESG integration", text: "Incorporating ESG considerations into decision-making frameworks." },
-  { title: "Legal & capital-structure expertise", text: "Company analysis and financial modeling, advising on new issues, corporate events, special situations and distressed securities." },
+  { title: "Fundamental credit analysis", text: "Company analysis and financial modeling, advising on new issues, corporate events, special situations and distressed securities." },
 ];
 
 type Role = { title: string; org?: string; dates: string; place?: string; bullets: string[] };
@@ -173,6 +173,24 @@ export default function App() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("hashchange", go);
+    };
+  }, []);
+
+  useEffect(() => {
+    const nav = document.querySelector<HTMLElement>('nav[aria-label="Primary"]');
+    const list = nav?.querySelector("ul");
+    if (!nav || !list) return;
+    const update = () => {
+      const max = list.scrollWidth - list.clientWidth;
+      nav.dataset.scrollStart = String(list.scrollLeft > 1);
+      nav.dataset.scrollEnd = String(max <= 1 || list.scrollLeft >= max - 1);
+    };
+    update();
+    list.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      list.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
     };
   }, []);
 

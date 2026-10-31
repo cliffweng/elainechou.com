@@ -112,7 +112,12 @@ h3 { font-size: 1.15rem; color: var(--green); margin-bottom: 0.6rem; }
 @media (max-width: 40rem) {
   .bar { flex-wrap: nowrap; gap: 0.75rem; }
   .brand { flex: none; font-size: 1.05rem; }
-  nav { flex: 1; min-width: 0; }
+  nav { flex: 1; min-width: 0; position: relative; }
+  nav::before, nav::after { content: ""; position: absolute; top: 0; bottom: 0; width: 1.75rem; pointer-events: none; transition: opacity 0.15s; }
+  nav::before { left: 0; opacity: 0; background: linear-gradient(to right, var(--paper), transparent); }
+  nav::after { right: 0; background: linear-gradient(to left, var(--paper), transparent); }
+  nav[data-scroll-start="true"]::before { opacity: 1; }
+  nav[data-scroll-end="true"]::after { opacity: 0; }
   nav ul { flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 0 0.9rem; }
   nav ul::-webkit-scrollbar { display: none; }
   nav li { flex: none; }

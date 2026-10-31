@@ -6,7 +6,7 @@ const focusAreas = [
   { title: "Liquid credit (IG/HY/EM)", text: "Investment grade, high yield, and emerging market credit." },
   { title: "AI-driven investment research", text: "Integrating AI-driven tools to enhance the investment process and uncover opportunities." },
   { title: "Investment risk & stress testing", text: "Risk assessment tools, stress testing, and scenario analysis." },
-  { title: "Structured credit (CLO/CDO/CDS)", text: "Researching, trading, and monitoring structured credit, with a focus on corporate CDS, CDX, iTraxx, and CDOs." },
+  { title: "Structured credit (CLO/CDO/CDS)", text: "Structured credit research, trading, and portfolio management: corporate CDS, CDX, iTRAXX, CDOs, and CLOs." },
   { title: "ESG integration", text: "Incorporating ESG considerations into decision-making frameworks." },
   { title: "Fundamental credit analysis", text: "Company analysis and financial modeling, advising on new issues, corporate events, special situations and distressed securities." },
 ];
